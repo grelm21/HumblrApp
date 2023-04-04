@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Humblr</string>
+    <string name="search">Искать</string>
+    <string name="new_posts">Новые</string>
+    <string name="popular">Популярные</string>
+    <string name="subscribed">Вы подписаны</string>
+    <string name="subscribe">Подписаться</string>
+    <string name="you_re_friends">Вы друзья</string>
+    <string name="add_to_friends">Добавить в друзья</string>
+    <string name="subreddits">Сабреддиты</string>
+    <string name="posts">Посты</string>
+    <string name="show_all_comments">Показать все комментарии</string>
+    <string name="no_comments_have_been_added_yet">Еще не комментировали =(</string>
+    <string name="save">Сохранить</string>
+    <string name="log_out">Выйти</string>
+    <string name="clear_saved_posts">Очистить сохраненные посты</string>
+    <string name="friends">Друзья</string>
+    <string name="write">Написать</string>
+    <string name="the_user_hasn_t_written_any_comments_yet">Пользователь еще не оставлял комментарии</string>
+    <string name="unsave">Удалить</string>
+    <string name="something_went_wrong">Что-то пошло не так =(</string>
+    <string name="share_link_text">Поделиться</string>
+    <string name="log_out_text">Вы точно хотите выйти?</string>
+    <string name="no">нет</string>
+    <string name="yes">да</string>
+    <string name="welcome_to_humblr">Добро пожаловать на Humblr</string>
+    <string name="onboard_one">"Здесь собраны сообщества по всевозможным интересам "</string>
+    <string name="skip">Пропустить</string>
+    <string name="onboard_two">"Ты можешь найти новые сабы по интересам и посмотреть сабы, на которые подписан "</string>
+    <string name="onboard_three">Вкладка избранное хранит закладки с комментариями и сабами. В профиле ты найдёшь информацию о себе.</string>
+    <string name="forward">Вперед</string>
+    <string name="login">Войти</string>
+</resources>

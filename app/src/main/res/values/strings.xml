@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Humblr</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="search">Search</string>
+    <string name="new_posts">New</string>
+    <string name="popular">Popular</string>
+    <string name="subscribed">Subscribed</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="you_re_friends">You are friends</string>
+    <string name="add_to_friends">Add to friends</string>
+    <string name="subreddits">Subreddits</string>
+    <string name="posts">Posts</string>
+    <string name="show_all_comments">Show all comments</string>
+    <string name="no_comments_have_been_added_yet">No comments have been added yet =(</string>
+    <string name="save">Save</string>
+    <string name="log_out">Log out</string>
+    <string name="clear_saved_posts">Clear saved posts</string>
+    <string name="friends">Friends</string>
+    <string name="write">Write</string>
+    <string name="the_user_hasn_t_written_any_comments_yet">The user hasn\'t written any comments yet.</string>
+    <string name="unsave">Delete</string>
+    <string name="something_went_wrong">Something went wrong =(</string>
+    <string name="share_link_text">Share link</string>
+    <string name="log_out_text">Are you sure you want to log out?</string>
+    <string name="no">no</string>
+    <string name="yes">yes</string>
+    <string name="welcome_to_humblr">Welcome to Humblr</string>
+    <string name="onboard_one">There are different communities for different interests</string>
+    <string name="onboard_two">You can find new subs and watch the subs you\'re subscribed to</string>
+    <string name="onboard_three">The tab Favorites has subs and posts you saved. There is your info in the profile page</string>
+    <string name="skip">Skip</string>
+    <string name="forward">Let\'s go</string>
+    <string name="login">Log in</string>
+</resources>

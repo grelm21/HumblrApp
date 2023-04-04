@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color_feed"
+        android:animateLayoutChanges="true"
+        tools:context=".ui.PostFragment">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="20dp"
+            app:fabCustomSize="60dp"
+            android:src="@drawable/icon_write_comment_new"
+            app:tint="@color/white"
+            android:backgroundTint="@color/background_color"/>
+
+        <LinearLayout
+            android:id="@+id/title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_color"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/back_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/back_button" />
+
+            <TextView
+                android:id="@+id/title_top"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="@tools:sample/lorem/random" />
+
+            <ImageButton
+                android:id="@+id/share_btn"
+                android:src="@drawable/baseline_share_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:scaleType="fitCenter" />
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/title_view"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="7dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp">
+
+                        <ImageButton
+                            android:id="@+id/subreddit_subscribe_btn"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@null"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_unsubscribed"
+                            app:layout_constraintEnd_toStartOf="@id/subreddit_name"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/subreddit_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/subreddit_subscribe_btn"
+                            app:layout_constraintStart_toEndOf="@id/subreddit_subscribe_btn"
+                            app:layout_constraintTop_toTopOf="@id/subreddit_subscribe_btn"
+                            tools:text="/r/subredditblah" />
+
+                        <View
+                            android:id="@+id/user_thread_separator"
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/black"
+                            app:layout_constraintBottom_toBottomOf="@id/rv_comments"
+                            app:layout_constraintEnd_toEndOf="@id/subreddit_subscribe_btn"
+                            app:layout_constraintStart_toStartOf="@id/subreddit_subscribe_btn"
+                            app:layout_constraintTop_toBottomOf="@id/subreddit_subscribe_btn" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/user_subscribe_btn"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintStart_toStartOf="@id/subreddit_name"
+                            app:layout_constraintTop_toBottomOf="@id/subreddit_subscribe_btn" />
+
+                        <TextView
+                            android:id="@+id/user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/user_subscribe_btn"
+                            app:layout_constraintStart_toEndOf="@id/user_subscribe_btn"
+                            app:layout_constraintTop_toTopOf="@id/user_subscribe_btn"
+                            tools:text="violentTwins" />
+
+                        <TextView
+                            android:id="@+id/published_time"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:ellipsize="marquee"
+                            android:maxLines="1"
+                            tools:text="published 3 hours ago"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/text_color"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="@id/user_name"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/user_name"
+                            app:layout_constraintTop_toTopOf="@id/user_name" />
+
+                        <TextView
+                            android:id="@+id/title_body"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toBottomOf="@id/user_subscribe_btn"
+                            app:layout_constraintStart_toStartOf="@id/user_subscribe_btn"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="@tools:sample/lorem" />
+
+                        <FrameLayout
+                            android:id="@+id/content"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="@id/user_subscribe_btn"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/title_body"
+                            app:layout_constraintBottom_toTopOf="@id/btn_vote">
+
+                            <com.google.android.exoplayer2.ui.StyledPlayerView
+                                android:id="@+id/player"
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="20dp"
+                                android:visibility="gone"/>
+
+                            <TextView
+                                android:id="@+id/description_body"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_vote"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:animateLayoutChanges="true"
+                            android:src="@drawable/icon_vote_unclicked"
+                            android:background="@null"
+                            android:scaleType="fitCenter"
+                            app:layout_constraintTop_toBottomOf="@id/content"
+                            app:layout_constraintBottom_toTopOf="@id/rv_comments"
+                            app:layout_constraintStart_toStartOf="@id/content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="10dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_votes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="true"
+                            tools:text="20k"
+                            android:textColor="@color/text_color"
+                            android:layout_marginStart="5dp"
+                            app:layout_constraintEnd_toStartOf="@id/btn_unvote"
+                            app:layout_constraintStart_toEndOf="@id/btn_vote"
+                            app:layout_constraintTop_toTopOf="@id/btn_vote"
+                            app:layout_constraintBottom_toBottomOf="@id/btn_vote"/>
+
+                        <ImageButton
+                            android:id="@+id/btn_unvote"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:animateLayoutChanges="true"
+                            android:src="@drawable/icon_unvote_unclicked"
+                            android:background="@null"
+                            android:scaleType="fitCenter"
+                            android:layout_marginStart="5dp"
+                            app:layout_constraintTop_toTopOf="@id/btn_vote"
+                            app:layout_constraintBottom_toBottomOf="@id/btn_vote"
+                            app:layout_constraintStart_toEndOf="@id/tv_votes"/>
+
+                        <ImageButton
+                            android:id="@+id/button_save"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:animateLayoutChanges="true"
+                            app:layout_constraintTop_toTopOf="@id/btn_unvote"
+                            app:layout_constraintBottom_toBottomOf="@id/btn_unvote"
+                            app:layout_constraintStart_toEndOf="@id/btn_unvote"
+                            android:src="@drawable/baseline_save_24"
+                            android:background="@null"
+                            android:scaleType="fitCenter"
+                            android:layout_marginStart="20dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_save"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="true"
+                            tools:text="@string/save"
+                            android:textColor="@color/text_color"
+                            app:layout_constraintTop_toTopOf="@id/button_save"
+                            app:layout_constraintBottom_toBottomOf="@id/button_save"
+                            app:layout_constraintStart_toEndOf="@id/button_save"
+                            android:layout_marginEnd="5dp"/>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_comments"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toBottomOf="@id/btn_vote"
+                                app:layout_constraintStart_toStartOf="@id/content"
+                                app:layout_constraintEnd_toEndOf="@id/content"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                android:orientation="vertical"
+                                tools:listitem="@layout/item_comments_reply"/>
+
+                        <Button
+                            android:id="@+id/all_comments"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/background_color"
+                            app:layout_constraintTop_toBottomOf="@id/rv_comments"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/show_all_comments"
+                            android:textSize="16dp"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/no_comments"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintTop_toBottomOf="@id/btn_vote"
+                            app:layout_constraintStart_toStartOf="@id/content"
+                            app:layout_constraintEnd_toEndOf="@id/content"
+                            android:text="@string/no_comments_have_been_added_yet"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            tools:visibility="gone"
+                            android:textStyle="bold"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <FrameLayout
+            android:id="@+id/fl_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#40000000"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_view"
+            tools:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/background_color" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_error"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_view"
+            android:background="#40000000"
+            android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="@string/something_went_wrong"
+            />
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
