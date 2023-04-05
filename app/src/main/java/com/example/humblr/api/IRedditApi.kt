@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface IRedditApi {
 
-    @GET("/{category}.json")
+    @GET("/{category}")
     suspend fun getListOfPosts(
         @Path("category") category: String,
         @Query("after") after: String? = null, @Query("limit") limit: Int = 25
