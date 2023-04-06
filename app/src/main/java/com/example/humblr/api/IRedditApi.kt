@@ -14,8 +14,18 @@ interface IRedditApi {
     @GET("/{category}")
     suspend fun getListOfPosts(
         @Path("category") category: String,
-        @Query("after") after: String? = null, @Query("limit") limit: Int = 25
+        @Query("after") after: String? = null,
+        @Query("limit") limit: Int = 25
     ): Response<PostsModel>
+
+    @GET("/search")
+    suspend fun search(
+//        @Query("limit") limit: Int = 25,
+        @Query("type") type: String = "link",
+        @Query("limit") limit: Int = 50,
+        @Query("q") query: String
+    ): Response<PostsModel>
+
 
     @POST("/api/vote")
     fun vote(@Query("id") id: String, @Query("dir") dir: Int): Call<ResponseBody>

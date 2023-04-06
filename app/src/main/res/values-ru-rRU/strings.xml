@@ -31,4 +31,7 @@
     <string name="onboard_three">Вкладка избранное хранит закладки с комментариями и сабами. В профиле ты найдёшь информацию о себе.</string>
     <string name="forward">Вперед</string>
     <string name="login">Войти</string>
+    <string name="nothing_found">Ничего не нашлось =(</string>
+    <string name="search_result">Результаты поиска для : %1$s</string>
+    <string name="empty_query">Запрос не может быть пустым</string>
 </resources>

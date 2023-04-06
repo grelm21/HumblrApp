@@ -29,7 +29,7 @@ data class DataPost(
     val author: String?,
     val selftext: String?,
     val num_comments: Int?,
-    val media: Media?,
+//    val media: Media?,
     val is_video: Boolean?,
     var score: Int?,
     val subreddit_name_prefixed: String?,
@@ -47,9 +47,9 @@ enum class Vote{
     DEFAULT
 }
 
-data class Media(
-    val reddit_video: RedditVideo
-)
+//data class Media(
+////    val reddit_video: RedditVideo
+//)
 
 data class RedditVideo(
     val bitrate_kbps: Int,

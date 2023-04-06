@@ -31,4 +31,7 @@
     <string name="skip">Skip</string>
     <string name="forward">Let\'s go</string>
     <string name="login">Log in</string>
+    <string name="nothing_found">Nothing found</string>
+    <string name="search_result">Search result for: %1$s</string>
+    <string name="empty_query">A query cannot be empty</string>
 </resources>

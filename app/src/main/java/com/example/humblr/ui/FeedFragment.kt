@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,7 +37,10 @@ class FeedFragment : Fragment() {
                 val postFragment = PostFragment.newInstance(post.data.id!!)
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.main_nav_host_fragment, postFragment)
-                    .setCustomAnimations(androidx.navigation.ui.R.anim.nav_default_enter_anim, androidx.navigation.ui.R.anim.nav_default_exit_anim)
+                    .setCustomAnimations(
+                        androidx.navigation.ui.R.anim.nav_default_enter_anim,
+                        androidx.navigation.ui.R.anim.nav_default_exit_anim
+                    )
                     .addToBackStack("post")
                     .commit()
             },
@@ -126,6 +130,33 @@ class FeedFragment : Fragment() {
                 }
             }
         }
+
+        _binding.searchView.isSubmitButtonEnabled = true
+        _binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                if (!query.isNullOrEmpty()) {
+                    val searchFragment = SearchResultFragment.newInstance(query!!)
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.main_nav_host_fragment, searchFragment)
+                        .addToBackStack("search").commit()
+
+                    _binding.searchView.setQuery(null, false)
+                    _binding.searchView.isIconified = true
+                    _binding.flProgress.visibility = VISIBLE
+                } else {
+                    Toast.makeText(requireContext(), R.string.empty_query, Toast.LENGTH_SHORT)
+                        .show()
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+        })
     }
 
     private fun paging(after: String?) {

@@ -31,8 +31,7 @@ val networkModule = module {
     }
 
     factory {
-        Retrofit.Builder()
-            .client(get())//добавляет интерсептор хедера для авторизации
+        Retrofit.Builder().client(get())//добавляет интерсептор хедера для авторизации
             .addConverterFactory(MoshiConverterFactory.create(get())).baseUrl(BASE_URL).build()
     }
 
@@ -65,7 +64,8 @@ val viewModelModule = module {
     viewModel { SubredditViewModel(get()) }
     viewModel { UserViewModel(get()) }
     viewModel { ProfileViewModel(get(), get()) }
-    viewModel {FavoritesViewModel(get(), get())}
+    viewModel { FavoritesViewModel(get(), get()) }
+    viewModel { SearchViewModel(get()) }
 }
 
 fun getSharedPrefs(androidApplication: Application): SharedPreferences {
