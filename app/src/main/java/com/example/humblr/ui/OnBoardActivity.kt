@@ -26,9 +26,9 @@ class OnBoardActivity : AppCompatActivity() {
 
         lifecycleScope.launchWhenCreated {
             _viewModel.token.collect {
-                if (!it.isNullOrEmpty()) {
-                    openApp()
-                }
+//                if (!it.isNullOrEmpty()) {
+//                    openApp()
+//                }
 //                else {
 //                    openLogIn()
 //                }

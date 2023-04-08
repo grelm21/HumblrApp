@@ -62,12 +62,17 @@ class LoginActivity : AppCompatActivity() {
                     TokenRequest.Builder(_serviceConfig, CLIENT_ID)
                         .setAuthorizationCode(code)
                         .setRedirectUri(REDIRECT_URI.toUri())
-                        .setGrantType(GrantTypeValues.AUTHORIZATION_CODE).build()
+                        .setGrantType(GrantTypeValues.AUTHORIZATION_CODE)
+                        .build()
                     , clientAuth
                 ) { response, exception -> // если авторизация успешна, вернется token в response, если ошибка, вернется exception
                     if (response != null) {
                         Log.d(
                             "TOKEN", response.accessToken.toString()
+                        )
+
+                        Log.d(
+                            "TOKEN_REFRESH", response.refreshToken.toString()
                         )
 
                         Log.d(
