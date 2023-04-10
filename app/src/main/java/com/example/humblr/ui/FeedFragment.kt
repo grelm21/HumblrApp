@@ -99,6 +99,8 @@ class FeedFragment : Fragment() {
                         _binding.flProgress.visibility = View.GONE
                         _binding.flError.visibility = View.VISIBLE
                         _binding.tvError.text = resources.getString(R.string.something_went_wrong)
+
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }

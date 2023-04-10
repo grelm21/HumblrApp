@@ -79,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
                             "TOKEN_SCOPE", response.scope.toString()
                         )
                         _viewModel.putToken(response.accessToken.toString())
+//                        _viewModel.putToken("1619427282164-7tEplsjR3__jmerjroyTcy8IH9cWsd")
 
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)

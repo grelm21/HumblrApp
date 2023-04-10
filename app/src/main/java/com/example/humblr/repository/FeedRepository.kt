@@ -27,12 +27,17 @@ class FeedRepository(
             return if (apiResponse.isSuccessful) {
                 Resource.Success(apiResponse.body()!!)
             } else {
-                Resource.Error(apiResponse.message())
+                if(apiResponse.code() == 401){
+                   return Resource.Error("Log in error")
+                }else {
+                    return Resource.Error(apiResponse.message())
+                }
             }
         } catch (e: HttpException) {
             Resource.Error(errorMessage = e.message ?: "Something went wrong")
         } catch (e: IOException) {
             Resource.Error("Please check your network connection")
+//        }catch (E: HttpUnauthorizedException)
         } catch (e: Exception) {
             Resource.Error(errorMessage = "Something went wrong")
         }
