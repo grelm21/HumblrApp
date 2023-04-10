@@ -81,17 +81,24 @@ class FeedFragment : Fragment() {
                         _binding.flProgress.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
-                        _binding.flProgress.visibility = View.GONE
-                        _binding.flError.visibility = View.GONE
-                        isLoading = false
-                        _subreddits.addAll(it.data?.data?.children as List<Post>)
-                        _feedAdapter.submitList(_subreddits)
-                        _feedAdapter.notifyDataSetChanged()
-                        paging(it.data.data.after)
+                        if (it.data!!.data.children.isEmpty()){
+                            _binding.flProgress.visibility = View.GONE
+                            _binding.flError.visibility = View.VISIBLE
+                            _binding.tvError.text = resources.getString(R.string.nothing_to_show)
+                        }else {
+                            _binding.flProgress.visibility = View.GONE
+                            _binding.flError.visibility = View.GONE
+                            isLoading = false
+                            _subreddits.addAll(it.data?.data?.children as List<Post>)
+                            _feedAdapter.submitList(_subreddits)
+                            _feedAdapter.notifyDataSetChanged()
+                            paging(it.data.data.after)
+                        }
                     }
                     is Resource.Error -> {
                         _binding.flProgress.visibility = View.GONE
                         _binding.flError.visibility = View.VISIBLE
+                        _binding.tvError.text = resources.getString(R.string.something_went_wrong)
                     }
                 }
             }

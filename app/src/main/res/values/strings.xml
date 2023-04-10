@@ -34,4 +34,5 @@
     <string name="nothing_found">Nothing found</string>
     <string name="search_result">Search result for: %1$s</string>
     <string name="empty_query">A query cannot be empty</string>
+    <string name="nothing_to_show">Nothing to show. Shearch interesting posts and subscribe to some subreddits to form your feed.</string>
 </resources>
