@@ -12,25 +12,28 @@ class FeedRepository(
     private val _api: IRedditApi
 ) {
 
-    fun voteUp(id: String){
+    fun voteUp(id: String) {
         _api.vote(id, 1)
     }
 
-    fun voteDown(id: String){
+    fun voteDown(id: String) {
         _api.vote(id, -1)
     }
 
     suspend fun getFeed(
-        after: String? = null, category: String): Resource<PostsModel>{
+        after: String? = null, category: String
+    ): Resource<PostsModel> {
         return try {
             val apiResponse = _api.getListOfPosts(after = after, category = category)
             return if (apiResponse.isSuccessful) {
                 Resource.Success(apiResponse.body()!!)
             } else {
-                if(apiResponse.code() == 401){
-                   return Resource.Error("Log in error")
-                }else {
-                    return Resource.Error(apiResponse.message())
+                when (apiResponse.code()) {
+                    400 -> Resource.Error("Bad Request")
+                    401 -> Resource.Error("Log in error")
+                    403 -> Resource.Error("Forbidden")
+                    404 -> Resource.Error("Not Found")
+                    else -> Resource.Error(apiResponse.message())
                 }
             }
         } catch (e: HttpException) {
@@ -44,7 +47,8 @@ class FeedRepository(
     }
 
     suspend fun search(
-        query: String): Resource<PostsModel>{
+        query: String
+    ): Resource<PostsModel> {
         return try {
             val apiResponse = _api.search(query = query)
             return if (apiResponse.isSuccessful) {
@@ -61,7 +65,7 @@ class FeedRepository(
         }
     }
 
-    suspend fun searchTry(query: String): Response<PostsModel>{
+    suspend fun searchTry(query: String): Response<PostsModel> {
         return _api.search(query = query)
     }
 }
